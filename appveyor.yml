@@ -1,11 +1,8 @@
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 init:
   - git config --global core.autocrlf input
   - SET PATH=%POSTGRES_PATH%\bin;%MYSQL_PATH%\bin;%PATH%
-  
-install:
-  - choco install dotnetcore-sdk --version 3.0.100
 
 skip_branch_with_pr: true
 skip_tags: true
@@ -33,7 +30,7 @@ environment:
   # MongoDB
   MongoDBConnectionString: mongodb://localhost/test
 services:
-  - mssql2016
+  - mssql2017
   - mysql
   - postgresql
   - mongodb
@@ -56,14 +53,14 @@ deploy:
 - provider: NuGet
   server: https://www.myget.org/F/stackoverflow/api/v2
   on:
-    branch: master  
+    branch: main  
   api_key:
     secure: P/UHxq2DEs0GI1SoDXDesHjRVsSVgdywz5vmsnhFQQY5aJgO3kP+QfhwfhXz19Rw
   symbol_server: https://www.myget.org/F/stackoverflow/symbols/api/v2/package
 - provider: NuGet
   server: https://www.myget.org/F/exceptional/api/v2
   on:
-    branch: master  
+    branch: main  
   api_key:
     secure: OQIXTmnq9eLRDtbatTQhSx4VE4pNdR7JbEVR7BYg8LmyOqcVcWMB/G316I17e61X
   symbol_server: https://www.myget.org/F/exceptional/api/v2/package
